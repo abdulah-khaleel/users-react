@@ -2,13 +2,27 @@ import React, { useState } from 'react';
 import Button from '../UI/Button';
 
 const UserInput = props => {
-  const [enteredValue, setEnteredValue] = useState('');
+  const [enteredValue, setEnteredValue] = useState({
+    userName: '',
+    userAge: '',
+  });
 
   const inputChangeHandler = event => {
     console.log(event.target.value);
+    const { name, value, type } = event.target;
+    setEnteredValue(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value,
+      };
+    });
   };
 
-  const formSubmitHandler = event => {};
+  const formSubmitHandler = event => {
+    event.preventDefault();
+    console.log(enteredValue);
+    props.onAddUser(enteredValue);
+  };
 
   return (
     <form className="text-sm sm:text-md" onSubmit={formSubmitHandler}>
@@ -18,9 +32,11 @@ const UserInput = props => {
         </label>
         <input
           type="text"
+          name="userName"
           className="border rounded-lg p-2 w-full shadow-inner"
           placeholder="Username here .."
           onChange={inputChangeHandler}
+          value={enteredValue.userName}
         />
       </div>
 
@@ -30,9 +46,11 @@ const UserInput = props => {
         </label>
         <input
           type="number"
+          name="userAge"
           className="border rounded-lg p-2 w-full shadow-inner"
           placeholder="Age here .."
           onChange={inputChangeHandler}
+          value={enteredValue.userAge}
         />
       </div>
       <Button type="submit">Add User</Button>
