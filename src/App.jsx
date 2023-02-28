@@ -60,7 +60,7 @@ function App() {
 
   const handleInfoClick = () => {
     setModalMessage([
-      'Built by Abdullah Khalil',
+      'github.com/abdulah-khaleel',
       'A basic users tracker with an input form to showcase forms validation and modal toggling with React. Styled with Tailwind. From Maximilian Schwarzmuellers React course on Udemy.',
     ]);
     setShowModal(true);
