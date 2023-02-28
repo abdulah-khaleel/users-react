@@ -20,8 +20,11 @@ const UserInput = props => {
 
   const formSubmitHandler = event => {
     event.preventDefault();
-    console.log(enteredValue);
     props.onAddUser(enteredValue);
+    setEnteredValue({
+      userName: '',
+      userAge: '',
+    });
   };
 
   return (
