@@ -28,7 +28,7 @@ function App() {
       setShowModal(true);
       return;
     }
-    if (formData.userAge <= 18 || formData.userAge >= 120) {
+    if (formData.userAge < 18 || formData.userAge >= 120) {
       setModalMessage([
         'Age Constraint',
         'Please enter a valid age (18 and above)',

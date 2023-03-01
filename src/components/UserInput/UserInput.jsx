@@ -18,9 +18,19 @@ const UserInput = props => {
     });
   };
 
+  let emptyFieldsAvailable =
+    enteredValue.userName === '' || enteredValue.userAge === '';
+
   const formSubmitHandler = event => {
     event.preventDefault();
     props.onAddUser(enteredValue);
+
+    if (
+      emptyFieldsAvailable ||
+      (enteredValue.userName !== '' && enteredValue.userAge < 18)
+    ) {
+      return;
+    }
     setEnteredValue({
       userName: '',
       userAge: '',
